@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './Header'
+import Header from './Header/Header'
 import SelectionForm from './Form/SelectionForm'
 import './App.css';
 
@@ -65,9 +65,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
           <Header />
-        </header>
         <main>
           <SelectionForm 
           selected={this.state.selected} 
