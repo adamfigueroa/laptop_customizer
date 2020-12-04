@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header/Header'
 import SelectionForm from './Form/SelectionForm'
+import Cart from './Cart/Cart'
 import './App.css';
 
 // This object will allow us to
@@ -41,22 +42,6 @@ class App extends Component {
   };
 
   render() {
-    
-
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
 
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
@@ -72,16 +57,18 @@ class App extends Component {
           USCurrencyFormat={USCurrencyFormat}
           updateFeature={this.updateFeature}
           />
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
+          
+            <Cart 
+            USCurrencyFormat={USCurrencyFormat}
+            selected={this.state.selected}
+            total={total}
+            />
             <div className="summary__total">
               <div className="summary__total__label">Total</div>
               <div className="summary__total__value">
                 {USCurrencyFormat.format(total)}
               </div>
             </div>
-          </section>
         </main>
       </div>
     );

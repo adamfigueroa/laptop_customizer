@@ -2,9 +2,9 @@ import React from "react"
 
 function Cart(props) {
 
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
+    const summary = Object.keys(props.selected).map((feature, idx) => {
         const featureHash = feature + '-' + idx;
-        const selectedOption = this.state.selected[feature];
+        const selectedOption = props.selected[feature];
   
         return (
           <div className="summary__option" key={featureHash}>
@@ -16,4 +16,13 @@ function Cart(props) {
           </div>
         );
       });
+
+      return (
+        <section className="main__summary">
+            <h2>Your cart</h2>
+            {summary}
+        </section>
+      )
 }
+
+export default Cart
