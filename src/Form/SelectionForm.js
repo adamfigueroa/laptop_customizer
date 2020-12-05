@@ -60,6 +60,7 @@ function SelectionForm(props) {
          key={featureHash}
          updateFeature={props.updateFeature}
          USCurrencyFormat={props.USCurrencyFormat}
+         idx={idx}
          />
         );
       });
@@ -69,7 +70,6 @@ function SelectionForm(props) {
             <h2>Customize your laptop</h2>
             {features}
           </form>
-
     )
 }
 
